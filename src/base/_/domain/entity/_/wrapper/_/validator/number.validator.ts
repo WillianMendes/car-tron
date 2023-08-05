@@ -1,5 +1,5 @@
 import PreValidatorInterface from './_/pre-validator.interface';
-import DomainException from '../../../../../../core/application/exception/domain.exception';
+import DomainException from '../../../../../../../core/application/exception/domain.exception';
 
 class NumberValidator implements PreValidatorInterface<number> {
   public isValid(value: number, label = 'value'): boolean {

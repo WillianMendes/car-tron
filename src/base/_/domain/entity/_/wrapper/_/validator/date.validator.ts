@@ -1,5 +1,5 @@
 import PreValidatorInterface from './_/pre-validator.interface';
-import DomainException from '../../../../../../core/application/exception/domain.exception';
+import DomainException from '../../../../../../../core/application/exception/domain.exception';
 
 class DateValidator implements PreValidatorInterface<Date> {
   public isValid(value: Date, label = 'value'): boolean {

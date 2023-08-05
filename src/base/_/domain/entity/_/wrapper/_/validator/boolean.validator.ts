@@ -1,5 +1,5 @@
 import PreValidatorInterface from './_/pre-validator.interface';
-import DomainException from '../../../../../../core/application/exception/domain.exception';
+import DomainException from '../../../../../../../core/application/exception/domain.exception';
 
 class BooleanValidator implements PreValidatorInterface<boolean> {
   public isValid(value: boolean, label = 'value'): boolean {

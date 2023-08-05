@@ -1,5 +1,5 @@
-import ID from '../wrapper/number/numeric-id.wrapper';
-import DateCustom from '../wrapper/date/date-custom.wrapper';
+import ID from './wrapper/number/numeric-id.wrapper';
+import DateCustom from './wrapper/date/date-custom.wrapper';
 
 class BaseEntity {
   private readonly _id?: ID;

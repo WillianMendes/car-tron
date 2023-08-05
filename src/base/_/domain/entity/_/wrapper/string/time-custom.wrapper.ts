@@ -1,6 +1,6 @@
 import BaseWrapper from '../_/base.wrapper';
 import StringValidator from '../_/validator/string.validator';
-import DomainException from '../../../../../core/application/exception/domain.exception';
+import DomainException from '../../../../../../core/application/exception/domain.exception';
 
 class TimeCustom extends BaseWrapper<string> {
   private constructor(value: string, label: string) {
