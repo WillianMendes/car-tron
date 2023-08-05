@@ -97,7 +97,65 @@ describe('Email Entity', () => {
         expect(email.createdAt).toBeDefined();
         expect(email.updatedAt).toBeDefined();
       });
+    });
 
+    describe('Failure', () => {
+      describe('Address', () => {
+        it('should throw an error if address is not null, undefined or empty', () => {
+          const input = (address: any) => ({
+            address,
+          });
+
+          const nullInput = () => Email.create(input(null));
+          const undefinedInput = () => Email.create(input(undefined));
+          const emptyInput = () => Email.create(input(''));
+
+          expect(nullInput).toThrow('address is required');
+          expect(undefinedInput).toThrow('address is required');
+          expect(emptyInput).toThrow('address must be a non-empty');
+        });
+
+        it('should throw an error if address is not a string', () => {
+          const input = (address: any) => ({
+            address,
+          });
+
+          const numberInput = () => Email.create(input(1));
+          const booleanInput = () => Email.create(input(true));
+          const objectInput = () => Email.create(input({}));
+          const arrayInput = () => Email.create(input([]));
+
+          expect(numberInput).toThrow('address must be a string');
+          expect(booleanInput).toThrow('address must be a string');
+          expect(objectInput).toThrow('address must be a string');
+          expect(arrayInput).toThrow('address must be a string');
+        });
+
+        it('should throw an error if address is not valid email', () => {
+          const input = (address: any) => ({
+            address,
+          });
+
+          const invalidInput = () => Email.create(input('invalid'));
+          const invalidInput2 = () => Email.create(input('invalid@'));
+          const invalidInput3 = () => Email.create(input('invalid@invalid'));
+          const invalidInput4 = () => Email.create(input('invalid@invalid.'));
+          const invalidInput5 = () => Email.create(input('invalid@.invalid'));
+          const invalidInput6 = () => Email.create(input('invalid@.invalid.'));
+
+          expect(invalidInput).toThrow('address must be a valid email');
+          expect(invalidInput2).toThrow('address must be a valid email');
+          expect(invalidInput3).toThrow('address must be a valid email');
+          expect(invalidInput4).toThrow('address must be a valid email');
+          expect(invalidInput5).toThrow('address must be a valid email');
+          expect(invalidInput6).toThrow('address must be a valid email');
+        });
+      });
+    });
+  });
+
+  describe('Mount', () => {
+    describe('Success', () => {
       it('should return a new instance of email mounting the data', () => {
         const email = Email.mount(emailMock);
 
