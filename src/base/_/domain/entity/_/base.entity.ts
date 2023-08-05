@@ -25,7 +25,7 @@ class BaseEntity {
   }
 
   public set updatedAt(updatedAt: Date) {
-    this._updatedAt = DateCustom.create(updatedAt, 'updatedAt');
+    this._updatedAt = DateCustom.create(updatedAt, 'updated at');
   }
 }
 

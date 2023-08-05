@@ -5,7 +5,7 @@ class StringCustom extends BaseWrapper<string> {
   private readonly _minLength: number;
   private readonly _maxLength: number;
 
-  private constructor(value: string, label: string, minLength: number, maxLength: number) {
+  protected constructor(value: string, label: string, minLength: number, maxLength: number) {
     super(value, label);
     this._minLength = minLength;
     this._maxLength = maxLength;

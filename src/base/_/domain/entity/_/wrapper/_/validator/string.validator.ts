@@ -72,6 +72,18 @@ class StringValidator implements PreValidatorInterface<string> {
     return true;
   }
 
+  public static isEmail(value: string, label = 'value'): boolean {
+    StringValidator.isValid(value, label);
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) {
+      const message = `${label} must be a valid email`;
+      DomainException.invalidData(message);
+    }
+
+    return true;
+  }
+
   public static isUrl(value: string, label = 'value'): boolean {
     StringValidator.isValid(value, label);
 
