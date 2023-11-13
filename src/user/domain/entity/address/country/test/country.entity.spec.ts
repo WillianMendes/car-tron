@@ -1,9 +1,12 @@
 import Country from '../country.entity';
 
 const countryMock = {
+  id: 1,
   name: 'Brazil',
   code: 'BRA',
   abbreviation: 'BR',
+  createdAt: new Date(),
+  updatedAt: new Date(),
 };
 
 describe('Country Entity', () => {
@@ -11,7 +14,7 @@ describe('Country Entity', () => {
     let country: Country;
 
     beforeAll(() => {
-      country = Country.create(countryMock);
+      country = Country.mount(countryMock);
 
       expect(country).toBeDefined();
       expect(country).toBeInstanceOf(Country);
@@ -30,6 +33,10 @@ describe('Country Entity', () => {
         expect(country).toBeInstanceOf(Country);
       });
 
+      it('should return a the correct id', () => {
+        expect(country.id).toBe(countryMock.id);
+      });
+
       it('should return a the correct name', () => {
         expect(country.name).toBe(countryMock.name);
       });
@@ -41,6 +48,14 @@ describe('Country Entity', () => {
       it('should return a the correct code', () => {
         expect(country.code).toBe(countryMock.code);
       });
+
+      it('should return a the correct createdAt', () => {
+        expect(country.createdAt).toBe(countryMock.createdAt);
+      });
+
+      it('should return a the correct updatedAt', () => {
+        expect(country.updatedAt).toBe(countryMock.updatedAt);
+      });
     });
   });
 
@@ -51,9 +66,12 @@ describe('Country Entity', () => {
 
         expect(country).toBeDefined();
         expect(country).toBeInstanceOf(Country);
+        expect(country.id).toBeUndefined();
         expect(country.name).toBe(countryMock.name);
         expect(country.abbreviation).toBe(countryMock.abbreviation);
         expect(country.code).toBe(countryMock.code);
+        expect(country.createdAt).toBeDefined();
+        expect(country.updatedAt).toBeDefined();
       });
     });
 
