@@ -84,6 +84,18 @@ class StringValidator implements PreValidatorInterface<string> {
     return true;
   }
 
+  public static isNumberString(value: string, label = 'value'): boolean {
+    StringValidator.isValid(value, label);
+
+    const numberRegex = /^\d+$/;
+    if (!numberRegex.test(value)) {
+      const message = `${label} must be a valid number`;
+      DomainException.invalidData(message);
+    }
+
+    return true;
+  }
+
   public static isUrl(value: string, label = 'value'): boolean {
     StringValidator.isValid(value, label);
 

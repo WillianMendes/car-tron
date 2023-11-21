@@ -49,11 +49,11 @@ describe('Country Entity', () => {
         expect(country.code).toBe(countryMock.code);
       });
 
-      it('should return a the correct createdAt', () => {
+      it('should return a the correct created at', () => {
         expect(country.createdAt).toBe(countryMock.createdAt);
       });
 
-      it('should return a the correct updatedAt', () => {
+      it('should return a the correct updated at', () => {
         expect(country.updatedAt).toBe(countryMock.updatedAt);
       });
     });
